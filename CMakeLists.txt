@@ -8,8 +8,8 @@ enable_language(CXX)
 set(CMAKE_CXX_STANDARD 20)
 
 # build type
-message("*** Type: ${CMAKE_BUILD_TYPE}${CMAKE_CONFIGURATION_TYPES}")
-add_compile_definitions($<$<CONFIG:Debug>:DEBUG>)
+message("*** Type: ${CMAKE_BUILD_TYPE}") #${CMAKE_CONFIGURATION_TYPES}")
+add_compile_definitions($<$<CONFIG:Debug>:DEBUG> $<$<CONFIG:Release>:NDEBUG>) # assert() is disabled when NDEBUG is defined
 
 # compiler
 message("*** Compiler: ${CMAKE_CXX_COMPILER_ID}")
@@ -32,11 +32,11 @@ add_subdirectory(coco)
 
 # check if we are on a "normal" operating system such as Windows or Linux
 if(NOT ${CMAKE_CROSSCOMPILING})
-	find_package(GTest CONFIG)
+    find_package(GTest CONFIG)
 
-	# enable testing, adds test or RUN_TESTS target to run all tests
-	enable_testing()
+    # enable testing, adds test or RUN_TESTS target to run all tests
+    enable_testing()
 
-	add_subdirectory(test)
+    add_subdirectory(test)
 endif()
 
