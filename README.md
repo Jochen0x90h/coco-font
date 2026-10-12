@@ -3,7 +3,7 @@
 Simple bitmap font engine for 1 and 8 bits per pixel
 
 ## Import
-Add coco-font/\<version> to your conanfile where version corresponds to the git tags
+Add coco-font/\<version> to your conanfile where version corresponds to a git tag.
 
 ## Features
 * Supports UTF-8 strings
